@@ -78,3 +78,5 @@ jobs:
           jf rt build-add-git
           # Publish build info
           jf rt build-publish
+      - name: Scan image using X-Ray
+        run: jf docker scan
