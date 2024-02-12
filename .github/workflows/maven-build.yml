@@ -79,4 +79,4 @@ jobs:
           # Publish build info
           jf rt build-publish
       - name: Scan image using X-Ray
-        run: jf docker scan
+        run: jf docker scan $IMAGE_NAME
