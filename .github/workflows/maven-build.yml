@@ -79,4 +79,6 @@ jobs:
           # Publish build info
           jf rt build-publish
       - name: Scan image using X-Ray
+        env:
+          IMAGE_NAME: gshuttleworth.jfrog.io/gshuttleworth-docker/spring-petclinic-cicd-image:${{ github.run_number }}
         run: jf docker scan $IMAGE_NAME
