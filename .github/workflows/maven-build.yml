@@ -46,9 +46,10 @@ jobs:
           cache: maven
       - name: Run Maven Tests (Unit & Integration)
         run: mvn --batch-mode --update-snapshots verify
-      - name: Build with Maven Wrapper
-        run: ./mvnw -B package
-            
+      # - name: Build with Maven Wrapper
+      #   run: ./mvnw -B package
+      # - name: Build Docker image
+      #   run: ./mvnw spring-boot:build-image -D spring-boot.build-image.imageName=myorg/myapp      
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
         env:
@@ -59,7 +60,8 @@ jobs:
         env:
           IMAGE_NAME: gshuttleworth.jfrog.io/gshuttleworth-docker/spring-petclinic-cicd-image:${{ github.run_number }}
         run: |
-          jf docker build -t $IMAGE_NAME .
+          # jf docker build -t $IMAGE_NAME .
+          ./mvnw spring-boot:build-image -D spring-boot.build-image.imageName=$IMAGE_NAME
           jf docker push $IMAGE_NAME
           
       - name: Publish Build info With JFrog CLI
