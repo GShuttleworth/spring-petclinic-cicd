@@ -38,18 +38,17 @@ jobs:
 
     steps:
       - uses: actions/checkout@v4
+     
       - name: Set up JDK ${{matrix.java}}
         uses: actions/setup-java@v4
         with:
           java-version: ${{matrix.java}}
           distribution: 'adopt'
           cache: maven
+     
       - name: Run Maven Tests (Unit & Integration)
-        run: mvn --batch-mode --update-snapshots verify
-      # - name: Build with Maven Wrapper
-      #   run: ./mvnw -B package
-      # - name: Build Docker image
-      #   run: ./mvnw spring-boot:build-image -D spring-boot.build-image.imageName=myorg/myapp      
+        run: mvn --batch-mode --update-snapshots verify     
+     
       - name: Setup JFrog CLI
         uses: jfrog/setup-jfrog-cli@v3
         env:
@@ -78,6 +77,7 @@ jobs:
           jf rt build-add-git
           # Publish build info
           jf rt build-publish
+      
       - name: Scan image using X-Ray
         env:
           IMAGE_NAME: gshuttleworth.jfrog.io/gshuttleworth-docker/spring-petclinic-cicd-image:${{ github.run_number }}
