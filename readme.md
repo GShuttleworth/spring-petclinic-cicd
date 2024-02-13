@@ -15,7 +15,7 @@ To test the Docker image you first must download the image locally:
 
 > `sudo` may be required to successfully run the following commands.
 1.  ```bash
-    docker login -u radioohead@gmail.com gshuttleworth.jfrog.io
+    docker login -u <email> gshuttleworth.jfrog.io
     ```
 2. If asked for a password, any non-empty password will work as the Artifactory repository will allow annonymous users.
 
