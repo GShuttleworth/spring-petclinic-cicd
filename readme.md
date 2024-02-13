@@ -15,12 +15,12 @@ To test the Docker image you first must download the image locally:
 
 > `sudo` may be required to successfully run the following commands.
 1.  ```bash
-    docker login -u <email> gshuttleworth.jfrog.io
+    docker login gshuttleworth.jfrog.io
     ```
-2. If asked for a password, any non-empty password will work as the Artifactory repository will allow annonymous users.
+2. No password should be required as the Artifactory repository will allow annonymous users.
 
 3.  ```bash
-    docker pull gshuttleworth.jfrog.io/gshuttleworth-docker/spring-petclinic-cicd-image:8
+    docker pull gshuttleworth.jfrog.io/gshuttleworth-docker/spring-petclinic-cicd-image:10
     ```
     > Image version tag may need to be updated as new builds are created. 
 
@@ -31,6 +31,6 @@ To test the Docker image you first must download the image locally:
 ## Running Docker Image
 To run the docker image:
 ```bash
-docker run -p 8080:8080 gshuttleworth.jfrog.io/gshuttleworth-docker/spring-petclinic-cicd-image:8
+docker run -p 8080:8080 gshuttleworth.jfrog.io/gshuttleworth-docker/spring-petclinic-cicd-image:10
 ```
 This will run the PetClinic application locally at [localhost:8080](http://localhost:8080).
